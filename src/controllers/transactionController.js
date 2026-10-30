@@ -109,7 +109,7 @@ async function createTransaction(req, res){
     /**
      * 3. Check account status
      */
-    if(fromUserAccount.status !== "ACTIVE" || toUserAccount.status !== "ACTIVE"){
+    if(fromUserAccount.type !== "ACTIVE" || toUserAccount.type !== "ACTIVE"){//FIXME: Code is breaking here
         return res.status(201).json({message:"Both from and to account must be active, to process transaction"})
     }
     /**
@@ -152,7 +152,7 @@ async function createTransaction(req, res){
         })
         await db.orm.public.transaction.update({ status: "COMPLETED" })
         return res.status(201).json({
-            message: "Initial funds transaction completed successfully",
+            message: "Transaction completed successfully",
             transaction: transaction
         })
     })

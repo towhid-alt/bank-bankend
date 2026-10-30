@@ -1,12 +1,12 @@
 const express = require("express")
-const { authSystemUserMiddleware } = require("../middleware/middlewareAuth.js")
+const { authSystemUserMiddleware, authMiddleware } = require("../middleware/middlewareAuth.js")
 const transactionController = require("../controllers/transactionController.js")
 
 const router = express.Router()
                                                      
 router.post("/admin/initial-funds", authSystemUserMiddleware, transactionController.createInitialFundsTransaction)
 
-
+router.post("/pay", authMiddleware, transactionController.createTransaction)
 
 /** - Create a new transaction
  * THE 10-STEP TRANSFER FLOW:

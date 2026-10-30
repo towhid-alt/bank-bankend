@@ -10,3 +10,8 @@
             "email": "rohitV100@gmail.com",
             "admin": false
         }
+        {
+    "email": "akash32@gmail.com",
+    "username": "Akash Gupta",
+    "password": "gupta@800"
+}

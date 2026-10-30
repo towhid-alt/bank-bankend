@@ -6,6 +6,7 @@ const { db } = require("../prisma/db.ts")
 const { and, not, or } = require("@prisma/orm-postgres/orm-client")
 const emailService = require("../services/emailService.js")
 const { createAccountController } = require("../controllers/accountController.js")
+const { authLogoutController } = require("../controllers/authController.js")
 
 const router = express.Router()
 const loggedInUsers = []
@@ -75,6 +76,7 @@ router.post("/login", async (req, res) => {
     }
 })
 
+router.post("/logout", authLogoutController)
 
 
 module.exports = router
