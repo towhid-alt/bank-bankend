@@ -1,0 +1,12 @@
+{
+            "id": 27,
+            "name": "Zohan Ahmed",
+            "email": "ZAhmed@gmail.com",
+            "admin": true
+        },
+        {
+            "id": 28,
+            "name": "Rohit Verma",
+            "email": "rohitV100@gmail.com",
+            "admin": false
+        }

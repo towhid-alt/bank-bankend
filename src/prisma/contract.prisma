@@ -1,10 +1,57 @@
 // use prisma-8
+enum AccountType {
+  ACTIVE
+  FROZEN
+  CLOSED
+}
+
+enum Status {
+  PENDING
+  COMPLETED
+  FAILED
+  REVERSED
+}
+
+enum TransactionType {
+  DEBIT
+  CREDIT
+}
 
 model User {
   id        Int       @id @default(autoincrement())
   email     String    @unique
   name      String
   password  String
+  admin     Boolean   @default(false)
   timestamp DateTime  @default(now())
 }
 
+model Account {
+  id        Int           @id@default(autoincrement())
+  userId    Int
+  type      AccountType   @default(ACTIVE)
+  createdAt DateTime      @default(now())    
+  user      User          @relation(fields: [userId], references: [id])
+}
+
+model transaction {
+  id              Int         @id@default(autoincrement())
+  fromAccount     Int     
+  toAccount       Int
+  status          Status      @default(PENDING)
+  amount          Float
+  from            Account     @relation(fields: [fromAccount], references: [id])
+  to              Account     @relation(fields: [toAccount], references: [id])
+  idempotencyKey  String      @unique
+  createdAt       DateTime    @default(now())
+}
+
+model ledger {
+  id              Int               @id@default(autoincrement())
+  account         Int
+  accountRel      Account           @relation(fields: [account], references: [id])
+  amount          Float       
+  transaction     Int
+  transactionR    transaction       @relation(fields: [transaction], references: [id])
+  type            TransactionType   
+}

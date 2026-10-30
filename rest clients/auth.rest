@@ -1,0 +1,27 @@
+###TEST ENDPOINT
+GET http://localhost:5000/
+
+###REGISTER ENDPOINT
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "email": "sheik800@gmail.com",
+    "username": "Towhid",
+    "password": "sheiktowhid@800"
+}
+
+###FETCH ALL USERS
+GET http://localhost:5000/api/dev/getUsers
+
+###DELETE USERS
+DELETE http://localhost:5000/api/dev/deleteUsers
+
+###LOGIN
+POST  http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "Towhid",
+    "password": "towhid@800"
+}

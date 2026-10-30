@@ -1,0 +1,12 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImlhdCI6MTc5MzE5MjQyMCwiZXhwIjoxNzkzMTk2MDIwfQ.lK4__ZtghUL9jB2SsnA9n4L7wtJ2lsOBLVVi6xpqTvU
+
+### Initial funds from admin user
+POST http://localhost:5000/api/transactions/admin/initial-funds
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "toAccount": "15",
+    "amount": "10000",
+    "idempotencyKey": "d73aeae4-1d6c-45a9-b182-b8d885239485"
+}
